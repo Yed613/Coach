@@ -1,27 +1,44 @@
 package com.example.coach.modele;
 
+/**
+ * Classe métier Profil
+ * contient les informations du profil
+ */
 public class Profil {
+
     // constantes
-    private static final Integer minFemme = 15;
-    private static final Integer maxFemme = 30;
-    private static final Integer minHomme = 10;
-    private static final Integer maxHomme = 25;
+    private static final Integer minFemme = 15; // maigre si en dessous
+    private static final Integer maxFemme = 30; // gros si au dessus
+    private static final Integer minHomme = 10; // maigre si en dessous
+    private static final Integer maxHomme = 25; // gros si au dessus
+
     private Integer poids;
+    private Integer taille;
     private Integer age;
     private Integer sexe;
-    private Integer taille;
     private float img = 0;
     private String message = "";
 
-    public Profil(Integer poids, Integer age, Integer sexe, Integer taille) {
+    /**
+     * Constructeur : valorise directement les proriétés poids, taille, age, sexe
+     * @param poids
+     * @param taille
+     * @param age
+     * @param sexe 1 pour homme, 0 pour femme
+     */
+    public Profil(Integer poids, Integer taille, Integer age, Integer sexe) {
         this.poids = poids;
+        this.taille = taille;
         this.age = age;
         this.sexe = sexe;
-        this.taille = taille;
     }
 
     public Integer getPoids() {
         return poids;
+    }
+
+    public Integer getTaille() {
+        return taille;
     }
 
     public Integer getAge() {
@@ -32,10 +49,10 @@ public class Profil {
         return sexe;
     }
 
-    public Integer getTaille() {
-        return taille;
-    }
-
+    /**
+     * Retourne img après l'avoir calculé s'il est vide
+     * @return img
+     */
     public float getImg() {
         if(img == 0){
             float tailleCm = ((float)taille)/100;
@@ -44,6 +61,10 @@ public class Profil {
         return img;
     }
 
+    /**
+     * retourne le message correspondant à l'img
+     * @return message "normal", "trop faible", "trop élevé"
+     */
     public String getMessage() {
         if(message.equals("")){
             message = "normal";
@@ -63,4 +84,5 @@ public class Profil {
         }
         return message;
     }
+
 }
